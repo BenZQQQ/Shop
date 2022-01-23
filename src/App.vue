@@ -11,6 +11,8 @@
   import Profile from './pages/Profile/Profile'
   import Search from './pages/Search/Search'
   import FooterGuide from './components/FooterGuide/FooterGuide'
+  import {reqFoodCategorys} from './api/index'
+  import {mapActions} from 'vuex'
   export default {
     name: 'App',
     components: {
@@ -19,6 +21,13 @@
       Search,
       Profile,
       FooterGuide
+    },
+    async mounted () {
+      const p = await reqFoodCategorys()
+      this.getReqUserInfo()
+    },
+    methods: {
+      ...mapActions(['getReqUserInfo'])
     }
   }
 </script>
